@@ -2,6 +2,7 @@ import { Button, Col, Container, ListGroup, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { REMOVE_FAVORITE } from "../actions/favoriteActions";
+import { Link } from "react-router-dom";
 
 
 const Favorites = () => {
