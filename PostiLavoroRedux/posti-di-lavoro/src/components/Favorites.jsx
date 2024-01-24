@@ -17,7 +17,9 @@ const Favorites = () => {
                 <i id="iconHome" className="bi bi-house text-center my-5" onClick={() => navigate("/")}></i>
                 <Col xs={12} className="d-flex justify-content-between align-items-center border-dark border-bottom mb-2">
                     <h1 className="display-5">Lavori salvati</h1>
-                    <Button variant="outline-danger h-50" /* onClick={() => dispatch({ type: REMOVE_FAVORITE, payload: fav })} */>Svuota lista</Button>
+                    {favorites.length > 0 && 
+                        <Button variant="outline-danger h-50" /* onClick={() => dispatch({ type: REMOVE_FAVORITE, payload: fav })} */>Svuota lista</Button>
+                    }
                 </Col>
                 <Col className="mt-2">
                     <ListGroup className="d-flex flex-row flex-wrap gap-2 justify-content-center">
