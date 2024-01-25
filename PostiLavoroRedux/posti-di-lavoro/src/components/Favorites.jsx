@@ -2,13 +2,13 @@ import { Button, Col, Container, ListGroup, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { REMOVE_FAVORITE, SVUOTA_LISTA } from "../actions/favoriteActions";
-import { Link } from "react-router-dom";
 
 
 const Favorites = () => {
 
     const dispatch = useDispatch();
     const favorites = useSelector(state => state.list)
+    console.log(favorites);
 
     const navigate = useNavigate();
 

@@ -1,11 +1,31 @@
 a,
-h1,h2,h3,h4,h5,h6,
-p{
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
   color: #000;
   text-decoration: none;
+  padding: 0;
+  margin: 0;
 }
 
-#iconHome{
+#iconHome {
   font-size: 30px;
   cursor: pointer;
+}
+
+body::-webkit-scrollbar {
+  width: 9px;
+}
+
+body::-webkit-scrollbar-track {
+  border-radius: 9px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #a0a0a0;
+  border-radius: 9px;
 }
