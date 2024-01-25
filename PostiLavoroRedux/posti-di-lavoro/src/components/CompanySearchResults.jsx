@@ -13,7 +13,6 @@ const CompanySearchResults = () => {
 
   useEffect(() => {
     getJobs();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const navigate = useNavigate();
