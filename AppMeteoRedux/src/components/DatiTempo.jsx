@@ -9,8 +9,9 @@ import { REMOVE_FAVORITE } from "../action/favoriteActions";
 
 const DatiTempo = (props) => { 
 
+    let store = useSelector((state) => state)
     let storeFavorites = useSelector((state) => state.favorites.list)
-    let storeCitta = useSelector((state) => state.city.nome)
+    let storeCitta = useSelector((state) => state.city.list)
     let dispatch = useDispatch()
 
     // ho fatto una variabile per calcolare la temperatura in celsius
@@ -97,12 +98,16 @@ const DatiTempo = (props) => {
         setIcon()
     }, [])
 
-    function preferiti(x){
+    function preferiti(){
+
+            dispatch(addFavorite(props.dati.name))
+            dispatch(nomeCitta(props.dati.name))
+            star.classList.replace('bi-star', 'bi-star-fill')
         
             /* console.log('ciao'); */
-            dispatch(addFavorite(props.dati.name))
-            x?.classList.toggle('bi-star-fill')
-            x?.setAttribute('isInPreferiti', 'false')
+            /* dispatch(addFavorite(props.dati.name)) */
+            /* x?.classList.toggle('bi-star-fill')
+            x?.setAttribute('isInPreferiti', 'false') */
 
             console.log(star);
         
@@ -129,11 +134,13 @@ const DatiTempo = (props) => {
             star.classList.replace('bi-star-fill', 'bi-star')
             dispatch({ type: REMOVE_FAVORITE, payload: props.dati.name })
             console.log(star.classList.contains('bi-star'));
-        }*/ 
-        console.log(store); 
+        } */ 
+        console.log(store);
+        console.log(storeFavorites);
+        console.log(storeCitta);
     }
 
-    function preferiti1(){
+    /* function preferiti1(){
         if(star?.classList.contains('bi-star-fill') == true){
             dispatch({ type: REMOVE_FAVORITE, payload: props.dati.name })
             star?.classList.replace('bi-star-fill', 'bi-star')
@@ -144,7 +151,7 @@ const DatiTempo = (props) => {
         }
         console.log(storeCitta);
         console.log(storeFavorites);
-    }
+    } */
     
 /* ---------- ************ PROVAA ************ ---------- */
 
@@ -153,8 +160,8 @@ const DatiTempo = (props) => {
             {props.dati != null &&
                 <div id="DatiContainer" className="container">
                     <div className="d-flex justify-content-center align-items-center gap-2 text-center mt-3 my-md-4">
-                        {/* <i id="star" className="bi bi-star" onClick={() => preferiti(this)}></i> */}
-                        <i id="star" className="bi bi-star-fill" onClick={() => preferiti1()}></i>
+                        <i id="star" className="bi bi-star" onClick={() => preferiti()}></i>
+                        {/* <i id="star" className="bi bi-star-fill" onClick={() => preferiti1()}></i> */}
                         <h2>{props.dati.name} {props.dati?.sys?.country}</h2>
                     </div>
                     <div id="bottomDati" className="mx-auto col-12 d-flex flex-wrap gap-2">

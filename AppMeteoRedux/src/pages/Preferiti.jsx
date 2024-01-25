@@ -5,12 +5,12 @@ import { useEffect, useState } from "react";
 
 const Preferiti = () => {
 
-    let storeCitta = useSelector((state) => state.city.nome)
-
+    /* let storeCitta = useSelector((state) => state.city.list) */
+    
     let navigate = useNavigate()
     const dispatch = useDispatch();
-
-    const preferiti = useSelector(state => state.list)
+    
+    let preferiti = useSelector((state) => state.favorites.list)
     console.log(preferiti);
 
     const APIkey = 'c7zheuja4UuojgEv6QkBOizP1TUZCFW2Jj8nyUsf511jxblpckGjrKnv';
@@ -39,16 +39,16 @@ const Preferiti = () => {
         }
     }
 
-    let singlephoto
+    /* let singlephoto
     function spostafoto() {
         photos?.length > 0 ?
         singlephoto = photos[0]?.src?.original :
         console.log('non ci sono foto')
-    }
+    } */
 
     useEffect(() => {
         fetchData()
-        spostafoto()
+        /* spostafoto() */
     }, [])
 
     return(
