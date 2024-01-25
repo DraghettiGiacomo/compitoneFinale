@@ -23,7 +23,7 @@ const Preferiti = () => {
             const risposta = await fetch(url ,{
                 
                 headers: {
-                    'Authorization': APIkey
+                    'Authorization': APIkey 
                 }}
             )
             if(risposta.ok){
