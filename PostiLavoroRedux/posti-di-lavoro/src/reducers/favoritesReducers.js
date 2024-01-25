@@ -1,4 +1,4 @@
-import { ADD_FAVORITE, REMOVE_FAVORITE } from "../actions/favoriteActions"
+import { ADD_FAVORITE, REMOVE_FAVORITE, SVUOTA_LISTA } from "../actions/favoriteActions"
 
 const initialState = {
     list: []
@@ -16,6 +16,11 @@ const favoritesReducers = (state = initialState, action) => {
             return {
                 ...state,
                 list: state.list.filter((fav) => fav !== action.payload)
+            }
+        case SVUOTA_LISTA:
+            return {
+                ...state,
+                list: state.list = []
             }
         default:
             return state

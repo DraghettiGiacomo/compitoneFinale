@@ -1,7 +1,7 @@
 import { Button, Col, Container, ListGroup, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { REMOVE_FAVORITE } from "../actions/favoriteActions";
+import { REMOVE_FAVORITE, SVUOTA_LISTA } from "../actions/favoriteActions";
 import { Link } from "react-router-dom";
 
 
@@ -19,7 +19,7 @@ const Favorites = () => {
                 <Col xs={12} className="d-flex justify-content-between align-items-center border-dark border-bottom mb-2">
                     <h1 className="display-5">Lavori salvati</h1>
                     {favorites.length > 0 && 
-                        <Button variant="outline-danger h-50" /* onClick={() => dispatch({ type: REMOVE_FAVORITE, payload: fav })} */>Svuota lista</Button>
+                        <Button variant="outline-danger h-50" onClick={() => dispatch({ type: SVUOTA_LISTA})}>Svuota lista</Button>
                     }
                 </Col>
                 <Col className="mt-2">
