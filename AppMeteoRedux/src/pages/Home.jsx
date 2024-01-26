@@ -4,7 +4,7 @@ import DatiTempo from '../components/DatiTempo'
 
 const Home = () => {
 
-    const [newCitta, setNewCitta] = useState('Bologna')
+    const [newCitta, setNewCitta] = useState('')
 
     const newName = (data) => {
       setNewCitta(data)
@@ -23,7 +23,7 @@ const Home = () => {
                 let data = await risposta.json()
                 setDati(data)
             } else {
-              alert('Nome inserito non valido')
+              /* alert('Nome inserito non valido') */
               console.log('errore nella risposta fetch');
             }
         }
