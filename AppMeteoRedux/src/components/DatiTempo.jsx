@@ -110,10 +110,26 @@ const DatiTempo = (props) => {
         console.log(star);
     } */
 
+    let star = document.getElementById('star')
     const preferiti = () => {
-        dispatch(addFavorite(props.dati.name))
-        console.log(store)
+        if(star.classList.contains('bi-star') === true){
+            dispatch(addFavorite(props.dati.name))
+            star.classList.replace('bi-star', 'bi-star-fill')
+            console.log(store)
+        } else if (star.classList.contains('bi-star-fill') === true){
+            dispatch({ type: REMOVE_FAVORITE, payload: props.dati.name })
+            star.classList.replace('bi-star-fill', 'bi-star')
+            console.log(store)
+        }
     }
+
+    function controlPreferiti(){
+        store?.list?.forEach((el) => {
+            if(el === props.dati.name){
+                star.classList.replace('bi-star', 'bi-star-fill')
+            }
+        })
+    }controlPreferiti()
     
 /* ---------- ************ PROVAA ************ ---------- */
 
