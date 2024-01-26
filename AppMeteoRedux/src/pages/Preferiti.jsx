@@ -10,11 +10,22 @@ const Preferiti = () => {
     let navigate = useNavigate()
     const dispatch = useDispatch();
     
-    let preferiti = useSelector((state) => state.favorites.list)
+    let store = useSelector((state) => state)
+    let preferiti = useSelector((state) => state.list)
+    console.log(store);
     console.log(preferiti);
+    
+    let i = 0
+    console.log(preferiti[i]);
+
+    const [nomeDaCercare, setnodeDaCercare] = useState()
+
+    function nuovoNome(){
+        setnodeDaCercare(preferiti[i])
+    }nuovoNome
 
     const APIkey = 'c7zheuja4UuojgEv6QkBOizP1TUZCFW2Jj8nyUsf511jxblpckGjrKnv';
-    const url = 'https://api.pexels.com/v1/search?query=Bologna'
+    const url = `https://api.pexels.com/v1/search?query=${nomeDaCercare}`
 
     const [photos, setphotos] = useState()
 
@@ -29,7 +40,7 @@ const Preferiti = () => {
             if(risposta.ok){
                 let data = await risposta.json()
                 setphotos(data.photos)
-                console.log(photos);
+                console.log(photos[i].src.original);
             } else {
               console.log('errore nella risposta fetch');
             }
@@ -60,7 +71,7 @@ const Preferiti = () => {
             <div className="container mt-5" id="contenitorecitypreferite">
                 <div className="row d-flex gap-4 justify-content-center">
                     {preferiti?.length > 0 ? preferiti.map((citta, index) =>
-                    <div style={{width: '18rem', backgroundImage: 'url(https://images.pexels.com/photos/783156/pexels-photo-783156.jpeg)'}} key={index} className="cardCity col-2 rounded text-light card">
+                    <div style={{width: '18rem', /* backgroundImage: `url(${photos[i]?.src?.original})` */}} key={index} className="cardCity col-2 rounded text-light card">
                         <div>
                             <h4 className="text-light card-title">{citta}</h4>
                         </div>

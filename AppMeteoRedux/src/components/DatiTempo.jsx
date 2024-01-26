@@ -4,14 +4,11 @@ import { LineChart, Line, CartesianGrid, XAxis, YAxis } from 'recharts';
 import { Button } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import { addFavorite } from '../action/favoriteActions'
-import { nomeCitta } from '../action/favoriteActions'
 import { REMOVE_FAVORITE } from "../action/favoriteActions";
 
 const DatiTempo = (props) => { 
 
-    let store = useSelector((state) => state)
-    let storeFavorites = useSelector((state) => state.favorites.list)
-    let storeCitta = useSelector((state) => state.city.list)
+    let store = useSelector((state) => state.list)
     let dispatch = useDispatch()
 
     // ho fatto una variabile per calcolare la temperatura in celsius
@@ -88,8 +85,8 @@ const DatiTempo = (props) => {
 
 /* ---------- ************ PROVAA ************ ---------- */
 
+    /* let star = document.getElementById('star')
     function setIcon(){
-        let star = document.getElementById('star')
         star?.setAttribute('isInPreferiti', 'false')
         console.log(star);
     }
@@ -99,59 +96,24 @@ const DatiTempo = (props) => {
     }, [])
 
     function preferiti(){
-
-            dispatch(addFavorite(props.dati.name))
-            dispatch(nomeCitta(props.dati.name))
-            star.classList.replace('bi-star', 'bi-star-fill')
-        
-            /* console.log('ciao'); */
-            /* dispatch(addFavorite(props.dati.name)) */
-            /* x?.classList.toggle('bi-star-fill')
-            x?.setAttribute('isInPreferiti', 'false') */
-
-            console.log(star);
-        
-        /* console.log(star); */
-
-        /* if(store === props.dati.name){
-            let star = document.getElementById('star')
-            star.classList.replace('bi-star', 'bi-star-fill') 
-        } */     
-        /* let star = document.getElementById('star')
-        dispatch(addFavorite(props.dati.name))
-        star.classList.replace('bi-star', 'bi-star-fill') */
-        /* if(star.classList.contains('bi-star-fill') == true){
-            star.classList.replace('bi-star-fill', 'bi-star')
-            dispatch({ type: REMOVE_FAVORITE, payload: props.dati.name })
-        } else {
-            star.classList.replace('bi-star', 'bi-star-fill')
-        } */
-        /* if(star.classList.contains('bi-star') == true){
+            
+        if(star?.getAttribute('isInPreferiti') === false){
             star.classList.replace('bi-star', 'bi-star-fill')
             dispatch(addFavorite(props.dati.name))
-            console.log(star.classList.contains('bi-star'));
-        } else if(star.classList.contains('bi-star-fill') == true) {
+            star?.setAttribute('isInPreferiti', 'true')
+        } else if(star?.getAttribute('isInPreferiti') === true) {
             star.classList.replace('bi-star-fill', 'bi-star')
             dispatch({ type: REMOVE_FAVORITE, payload: props.dati.name })
-            console.log(star.classList.contains('bi-star'));
-        } */ 
+            star?.setAttribute('isInPreferiti', 'false')
+        } 
         console.log(store);
-        console.log(storeFavorites);
-        console.log(storeCitta);
-    }
-
-    /* function preferiti1(){
-        if(star?.classList.contains('bi-star-fill') == true){
-            dispatch({ type: REMOVE_FAVORITE, payload: props.dati.name })
-            star?.classList.replace('bi-star-fill', 'bi-star')
-        } else {
-            dispatch(addFavorite(props.dati.name))
-            dispatch(nomeCitta(props.dati.name))
-            star?.classList.replace('bi-star', 'bi-star-fill')
-        }
-        console.log(storeCitta);
-        console.log(storeFavorites);
+        console.log(star);
     } */
+
+    const preferiti = () => {
+        dispatch(addFavorite(props.dati.name))
+        console.log(store)
+    }
     
 /* ---------- ************ PROVAA ************ ---------- */
 
@@ -161,7 +123,6 @@ const DatiTempo = (props) => {
                 <div id="DatiContainer" className="container">
                     <div className="d-flex justify-content-center align-items-center gap-2 text-center mt-3 my-md-4">
                         <i id="star" className="bi bi-star" onClick={() => preferiti()}></i>
-                        {/* <i id="star" className="bi bi-star-fill" onClick={() => preferiti1()}></i> */}
                         <h2>{props.dati.name} {props.dati?.sys?.country}</h2>
                     </div>
                     <div id="bottomDati" className="mx-auto col-12 d-flex flex-wrap gap-2">
